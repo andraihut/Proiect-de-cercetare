@@ -1,0 +1,11 @@
+From: legitimate.sender@example.com
+Subject: Important Document Attached
+
+Dear recipient,
+
+Please find the important document attached. Your immediate attention is required.
+
+Password for the document: 123456
+
+Best regards,
+Legitimate Sender

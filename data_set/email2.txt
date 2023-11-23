@@ -1,0 +1,10 @@
+From: sender@example.com
+Subject: Important Information
+
+Dear user,
+
+Please click on the following link to update your password:
+https://example.com/update-password
+
+Thank you,
+Legitimate Sender

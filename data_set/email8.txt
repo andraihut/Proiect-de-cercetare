@@ -1,0 +1,9 @@
+From: billing.department@example.com
+Subject: Invoice Attached: Urgent Payment Required
+
+Dear [Your Name],
+
+Please find attached the invoice for your recent purchases. Immediate payment is required to avoid service disruption.
+
+Thank you,
+Billing Department

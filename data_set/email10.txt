@@ -1,0 +1,11 @@
+From: lottery.win@example.com
+Subject: Congratulations! You've Won a Prize!
+
+Dear lucky winner,
+
+Great news! You've won a prize in our lottery. To claim your winnings, click on the link below:
+
+https://claim-your-prize.com
+
+Best regards,
+Lottery Team

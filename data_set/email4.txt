@@ -1,0 +1,10 @@
+From: phishing.attempt@example.com
+Subject: Urgent: Account Verification Required
+
+Dear user,
+
+Your account is at risk! Click on the following link to verify your account immediately:
+https://phishing-site.com/verify-account
+
+Thank you,
+Phisher

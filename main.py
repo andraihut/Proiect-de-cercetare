@@ -1,31 +1,41 @@
 import email
-from email import policy
+import re
+import urllib.parse
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from email.parser import BytesParser
 
-# Numele fișierului cu e-mail-ul
-nume_fisier_email = "C:\\Users\\User\\Email_verification\\email1.txt"
+def extract_features_from_email(file_path):
+    with open(file_path, 'r') as file:
+        email_content = file.read()
 
-# Citirea textului e-mail-ului din fișier
-with open(nume_fisier_email, 'r', encoding='utf-8') as file:
-    email_text = file.read()
+    features = {}
 
-# Parsarea textului e-mail-ului
-msg = BytesParser(policy=policy.default).parsebytes(email_text.encode('utf-8'))
+    # Analiză adresa de expediere
+    msg = BytesParser().parsebytes(email_content.encode('utf-8'))
+    sender_address = msg.get('From') or msg.get('Sender')
+    features['sender_address'] = sender_address
 
-# Extrage expeditorul (From) și subiectul (Subject)
-expeditor = msg.get('From', 'N/A')
-subiect = msg.get('Subject', 'N/A')
+    # Analiză legături și URL-uri
+    links = re.findall(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
+                       email_content)
+    parsed_links = [urllib.parse.urlparse(link) for link in links]
+    features['links'] = parsed_links
 
-# Extrage conținutul mesajului
-continut_mesaj = msg.get_body(preferencelist=('plain', 'html')).get_content()
+    # Procesare limbaj natural (simplificat)
+    words = word_tokenize(email_content)
+    words = [word.lower() for word in words if word.isalpha()]
+    stop_words = set(stopwords.words('english'))
+    words = [word for word in words if word not in stop_words]
+    features['word_tokens'] = words
 
-# Găsește link-urile din conținutul mesajului
-linkuri = []
-for cuvant in continut_mesaj.split():
-    if cuvant.startswith("http") or cuvant.startswith("www"):
-        linkuri.append(cuvant)
+    # Verificare cereri de informații personale
+    personal_info_keywords = ['password', 'credit card', 'social security']
+    features['personal_info_requests'] = any(keyword in email_content.lower() for keyword in personal_info_keywords)
 
-# Afiseaza rezultatele
-print(f"Expeditor: {expeditor}")
-print(f"Subiect: {subiect}")
-print(f"Link-uri: {linkuri}")
+    return features
+
+file_path = '/data_set/email2.txt'
+email_features = extract_features_from_email(file_path)
+print(email_features)
+

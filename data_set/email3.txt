@@ -1,0 +1,9 @@
+From: legitimate.sender@example.com
+Subject: Your Monthly Newsletter
+
+Dear subscriber,
+
+Here is your monthly newsletter with exciting updates and news.
+
+Best regards,
+Legitimate Sender

@@ -1,0 +1,12 @@
+From: security.alerts@example.com
+Subject: Urgent: Password Update Required
+
+Dear user,
+
+For security reasons, we require you to update your password immediately.
+Click on the link below to proceed:
+
+https://legitimate-site.com/update-password
+
+Thank you,
+Security Team
